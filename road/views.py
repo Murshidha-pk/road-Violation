@@ -126,7 +126,9 @@ class RoadViolationAddView(View):
         messages.error(request,"sorry !! not added")
 
         return render(request,self.template_nmae,{"form":form_instance})
-    
+
+
+@method_decorator(decs,name="dispatch")
 class ViolationListView(View):
 
     template_name="list.html"
@@ -137,8 +139,10 @@ class ViolationListView(View):
 
         return render(request,self.template_name,{"data":qs})
 
+
 #delete
-   
+
+@method_decorator(decs,name="dispatch")
 class ViolationDeleteView(View):
 
     def get(self,request,*args,**kwargs):
@@ -151,8 +155,9 @@ class ViolationDeleteView(View):
 
         return redirect("violation-list")
 
-#update
 
+#update
+@method_decorator(decs,name="dispatch")
 class ViolationUpdateView(View):
 
     template_name="update.html"
